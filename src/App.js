@@ -1,25 +1,31 @@
-import { Component } from 'react';
+import { Component } from "react";
 
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      name: { firstName: 'Hans', lastName: 'Christian' },
+      company: 'HANSDiGi'
+    };
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
+          <p>Hi {this.state.name.firstName} {this.state.name.lastName}, I work at {this.state.company}.</p>
+          <button
+            onClick={() => {
+              this.setState({ name: { firstName: 'Hans', lastName: 'Handsome' } });
+            }}
           >
-            Learn React
-          </a>
+            Change name
+          </button>
         </header>
       </div>
     );
